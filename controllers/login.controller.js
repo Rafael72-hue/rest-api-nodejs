@@ -1,3 +1,7 @@
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const mysql = require('../mysql').pool;
+
 exports.registerUser = (req, res, next) => {
   const {email, senha} = req.body;
   mysql.getConnection((error, conn) => {
