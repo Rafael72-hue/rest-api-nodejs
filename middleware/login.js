@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken');
+require("dotenv").config();
 
 exports.obrigatorio = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1]
-    const decode = jwt.verify(token, 'segredo')
+    const decode = jwt.verify(token, process.env.JWT_KEY)
     req.usuario = decode;
     next();
   } catch (error) {
@@ -14,7 +15,7 @@ exports.obrigatorio = (req, res, next) => {
 exports.opcional = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1]
-    const decode = jwt.verify(token, 'segredo')
+    const decode = jwt.verify(token, process.env.JWT_KEY)
     req.usuario = decode;
     next();
   } catch (error) {
