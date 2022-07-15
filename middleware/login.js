@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-require("dotenv").config();
 
 exports.obrigatorio = (req, res, next) => {
   try {
